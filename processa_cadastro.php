@@ -24,14 +24,11 @@ $sql = "INSERT INTO usuarios (nome_completo, cpf, email, senha) VALUES (?, ?, ?,
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("ssss", $nome, $cpf, $email, $senha);
 
-// Executa e verifica se deu certo
+//Supondo que o cadastro foi bem-sucedido:
 if ($stmt->execute()) {
-    echo "Cadastro realizado com sucesso!";
+    // Redireciona para a págia de sucesso 
+    header("Location: endereco.php");
+    exit();  // Sempre usar o exit() apóis o header()
 } else {
     echo "Erro ao cadastrar: " . $stmt->error;
 }
-
-// Fecha a conexão
-$stmt->close();
-$conn->close();
-?>

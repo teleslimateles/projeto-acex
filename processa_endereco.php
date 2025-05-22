@@ -21,11 +21,13 @@ $bairro = $_POST['bairro'];
 // Prepara a query
 $sql = "INSERT INTO endereços (logradouro, cep, bairro) VALUES (?, ?, ?)";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("ssss", $logradouro, $cep, $bairro);
+$stmt->bind_param("sss",$logradouro, $cep, $bairro);
 
 // Executa e verifica se deu certo
 if ($stmt->execute()) {
-    echo "Cadastro realizado com sucesso!";
+    // Redireciona para a página de login
+    header("Location: index.html");
+    exit(); // IMPORTANTE: para interromper o script após redirecionar
 } else {
     echo "Erro ao cadastrar: " . $stmt->error;
 }
