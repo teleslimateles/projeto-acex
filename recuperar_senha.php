@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Recuperar Senha - Prefeitura de Santo André</title>
   <link rel="stylesheet" href="style.css" />
-  <style>
+<style>
     body {
       background: url('background.jpg') no-repeat center center/cover;
       min-height: 100vh;
