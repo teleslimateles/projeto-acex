@@ -19,7 +19,6 @@ if (isset($_POST['login_usuario'])) {
         if (password_verify($senha, $usuarioDB['senha'])) {
             // Senha correta, criar a sessão
             $_SESSION['usuario'] = $usuarioDB['email'];
-            $_SESSION['nome'] = $usuarioDB['nome'];
             header('Location: cadastro_creche.html');
             exit;
             

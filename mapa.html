@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mapa de Santo André</title>
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+  />
+  <style>
+    #map {
+      height: 400px;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Mapa de Santo André</h1>
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+  <script>
+    // Coordenadas aproximadas do centro de Santo André
+    const santoAndreCoords = [-23.6639, -46.5383];
+
+    // Cria o mapa, centralizado em Santo André, com zoom 14
+    const map = L.map('map').setView(santoAndreCoords, 14);
+
+    // Define os limites aproximados para a região de Santo André
+    const bounds = L.latLngBounds(
+      [-23.70, -46.60], // sudoeste (SW)
+      [-23.63, -46.49]  // nordeste (NE)
+    );
+    map.setMaxBounds(bounds);
+    map.on('drag', function () {
+      map.panInsideBounds(bounds, { animate: false });
+    });
+
+    // Usa os tiles gratuitos do OpenStreetMap
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    }).addTo(map);
+
+    // Adiciona um marcador no centro de Santo André
+    L.marker(santoAndreCoords)
+      .addTo(map)
+      .bindPopup('Centro de Santo André')
+      .openPopup();
+  </script>
+</body>
+</html>
