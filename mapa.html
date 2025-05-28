@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
-  <title>Mapa de Santo André</title>
+  <title>Mapa de Santo André com Busca por CEP</title>
   <link
     rel="stylesheet"
     href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
@@ -11,44 +11,95 @@
     #map {
       height: 400px;
       width: 100%;
+      margin-top: 10px;
+    }
+    #cepForm {
+      margin-bottom: 10px;
     }
   </style>
 </head>
 <body>
 
-  <h1>Mapa de Santo André</h1>
+  <h1>Mapa de Santo André com Busca por CEP</h1>
+  
+  <form id="cepForm">
+    <label for="cep">Digite o CEP:</label>
+    <input type="text" id="cep" placeholder="Ex: 09010000" maxlength="8" />
+    <button type="submit">Buscar</button>
+  </form>
+
   <div id="map"></div>
 
   <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
   <script>
-    // Coordenadas aproximadas do centro de Santo André
     const santoAndreCoords = [-23.6639, -46.5383];
-
-    // Cria o mapa, centralizado em Santo André, com zoom 14
-    const map = L.map('map').setView(santoAndreCoords, 14);
-
-    // Define os limites aproximados para a região de Santo André
     const bounds = L.latLngBounds(
-      [-23.70, -46.60], // sudoeste (SW)
-      [-23.63, -46.49]  // nordeste (NE)
+      [-23.70, -46.60],
+      [-23.63, -46.49]
     );
+
+    const map = L.map('map').setView(santoAndreCoords, 14);
     map.setMaxBounds(bounds);
     map.on('drag', function () {
       map.panInsideBounds(bounds, { animate: false });
     });
 
-    // Usa os tiles gratuitos do OpenStreetMap
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
       attribution:
         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     }).addTo(map);
 
-    // Adiciona um marcador no centro de Santo André
-    L.marker(santoAndreCoords)
-      .addTo(map)
-      .bindPopup('Centro de Santo André')
-      .openPopup();
+    // Marcador inicial no centro
+    let marker = L.marker(santoAndreCoords).addTo(map).bindPopup('Centro de Santo André').openPopup();
+
+    // Função para buscar CEP via ViaCEP
+    async function buscarEnderecoPorCEP(cep) {
+      const url = `https://viacep.com.br/ws/${cep}/json/`;
+      const res = await fetch(url);
+      if (!res.ok) throw new Error('Erro ao buscar CEP');
+      const data = await res.json();
+      if (data.erro) throw new Error('CEP não encontrado');
+      return `${data.logradouro}, ${data.bairro}, ${data.localidade}, ${data.uf}, Brasil`;
+    }
+
+    // Função para obter coordenadas do endereço via Nominatim (OpenStreetMap)
+    async function obterCoordenadas(endereco) {
+      const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(endereco)}`;
+      const res = await fetch(url);
+      if (!res.ok) throw new Error('Erro ao buscar coordenadas');
+      const data = await res.json();
+      if (data.length === 0) throw new Error('Endereço não encontrado');
+      return {
+        lat: parseFloat(data[0].lat),
+        lon: parseFloat(data[0].lon)
+      };
+    }
+
+    // Manipula envio do formulário
+    document.getElementById('cepForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const cep = document.getElementById('cep').value.trim();
+      if (!/^\d{8}$/.test(cep)) {
+        alert('Por favor, digite um CEP válido com 8 dígitos.');
+        return;
+      }
+
+      try {
+        const endereco = await buscarEnderecoPorCEP(cep);
+        const coords = await obterCoordenadas(endereco);
+
+        // Atualiza o mapa e marcador
+        map.setView([coords.lat, coords.lon], 16);
+        if (marker) map.removeLayer(marker);
+        marker = L.marker([coords.lat, coords.lon]).addTo(map)
+          .bindPopup(`CEP: ${cep}<br>${endereco}`)
+          .openPopup();
+      } catch (err) {
+        alert(err.message);
+      }
+    });
   </script>
 </body>
 </html>
+x
