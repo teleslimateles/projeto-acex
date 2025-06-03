@@ -5,4 +5,5 @@ define('SENHA', 'Senha@123');
 define('DB', 'creche_santo_andre');
 
 $conexao = mysqli_connect(HOST, USUARIO, SENHA, DB) or die ('Não foi possível conectar');
+
 ?>

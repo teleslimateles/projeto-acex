@@ -118,11 +118,13 @@
     <div class="form-box">
       <div class="left">
         <h2>Prefeitura de <br><strong>Santo André</strong></h2>
-        <form action="processa_login.php" method="POST">
-          <input type="text" name="cpf_email" placeholder="Email ou CPF" required />
+
+         <form method="POST" action="processa_login.php">
+          <input type="text" name="usuario" placeholder="Email ou CPF" required />
           <input type="password" name="senha" placeholder="Senha" required />
-          <button type="submit" class="btn acessar">Acessar</button>
+          <button type="submit" name="login_usuario" class="btn acessar">Acessar</button>
         </form>
+        
         <a href="recuperar_senha.php" class="link">Esqueci minha senha</a>
       </div>
 
