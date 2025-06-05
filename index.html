@@ -6,7 +6,7 @@
   <title>Prefeitura de Santo André - Cadastro de Creches</title>
   <link rel="stylesheet" href="style.css" />
  <style>
-    * {
+       * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
@@ -118,23 +118,24 @@
     <div class="form-box">
       <div class="left">
         <h2>Prefeitura de <br><strong>Santo André</strong></h2>
+        <form action="processa_login.php" method="POST" class="login-form">
+      
+          <input type="email" name="email" id="email" placeholder="Digite seu email ou CPF" required>
 
-         <form method="POST" action="processa_login.php">
-          <input type="text" name="usuario" placeholder="Email ou CPF" required />
-          <input type="password" name="senha" placeholder="Senha" required />
-          <button type="submit" name="login_usuario" class="btn acessar">Acessar</button>
+          <input type="password" name="senha" id="senha" placeholder="Digite sua senha" required>
+
+          <button type="submit" class="btn">Entrar</button>
         </form>
-        
         <a href="recuperar_senha.php" class="link">Esqueci minha senha</a>
       </div>
 
-      <div class="separator"></div>
 
+      <div class="separator"></div>
       <div class="right">
         <h3>Cadastre seu filho na creche mais próxima a você</h3>
         <p>Para realizar o login, você pode usar seu email ou CPF.</p>
         <p>Estamos realizando o cadastro de crianças para matrícula na creche. Pais ou responsáveis interessados devem preencher o formulário com os dados da criança e apresentar os documentos necessários. As vagas são limitadas.</p>
-        <a href="cadastro.php" class="btn cadastro">Crie sua conta</a>
+        <a href="cadastro.html" class="btn cadastro">Crie sua conta</a>
       </div>
     </div>
   </div>

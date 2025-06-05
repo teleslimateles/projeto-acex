@@ -15,13 +15,14 @@ if ($conn->connect_error) {
 
 // Recebe os dados do formulário
 $cep = $_POST['cep'];
-$logradouro = $_POST['logradouro'];
+$rua = $_POST['rua'];
+$numero = $_POST['numero'];
 $bairro = $_POST['bairro'];
 
 // Prepara a query
-$sql = "INSERT INTO endereços (logradouro, cep, bairro) VALUES (?, ?, ?)";
+$sql = "INSERT INTO endereços (cep, rua, numero, bairro) VALUES (?, ?, ?,?)";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("sss",$logradouro, $cep, $bairro);
+$stmt->bind_param("ssss", $cep, $rua, $numero, $bairro);
 
 // Executa e verifica se deu certo
 if ($stmt->execute()) {

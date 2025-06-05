@@ -20,14 +20,14 @@ $email = $_POST['email'];
 $senha = password_hash($_POST['senha'], PASSWORD_DEFAULT); // senha criptografada
 
 // Prepara a query
-$sql = "INSERT INTO usuarios (nome_completo, cpf, email, senha) VALUES (?, ?, ?, ?)";
+$sql = "INSERT INTO responsavel (nome_completo, cpf, email, senha) VALUES (?, ?, ?, ?)";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("ssss", $nome, $cpf, $email, $senha);
 
 //Supondo que o cadastro foi bem-sucedido:
 if ($stmt->execute()) {
     // Redireciona para a págia de sucesso 
-    header("Location: endereco.php");
+    header("Location: cadastro_crianca.html");
     exit();  // Sempre usar o exit() apóis o header()
 } else {
     echo "Erro ao cadastrar: " . $stmt->error;
