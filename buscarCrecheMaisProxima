@@ -20,9 +20,9 @@ const creches = [
     lon: -46.5392
   },
   {
-    nome: "Creche Irmã Rosina da Silva",
-    lat: -23.6785,
-    lon: -46.5380
+    nome: "Creche Municipal Maria Delphina de Carvalho Neve",
+    lat: -23.6639,
+    lon: -46.5383
   }
 ];
 function calcularDistancia(lat1, lon1, lat2, lon2) {

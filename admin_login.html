@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login do Administrador - Prefeitura de Santo André</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: url('background.jpg') no-repeat center center/cover;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(3px);
+    }
+
+    .container {
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 2rem;
+      border-radius: 20px;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 24px;
+      margin-bottom: 1.5rem;
+    }
+
+    input {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      background-color: #86c5f0;
+      color: #000;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 10px;
+    }
+
+    .link-voltar {
+      display: block;
+      margin-top: 1rem;
+      font-size: 14px;
+      color: #007BFF;
+      text-decoration: none;
+    }
+
+    .link-voltar:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Login do Administrador</h2>
+    <form action="processa_admin_login.php" method="POST">
+      <input type="text" name="admin_user" placeholder="Usuário Admin" required />
+      <input type="password" name="admin_pass" placeholder="Senha" required />
+      <button type="submit" class="btn">Entrar</button>
+    </form>
+    <a href="index.html" class="link-voltar">← Voltar para login do usuário</a>
+  </div>
+</body>
+</html>

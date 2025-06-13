@@ -123,7 +123,7 @@
             popupAnchor: [0, -30]
           })
         }).addTo(map)
-          .bindPopup(`<b>Creche mais próxima:</b><br>${crecheMaisProxima.nome}<br><a href="detalhes_creche.html?nome=${encodeURIComponent(crecheMaisProxima.nome)}">Ver detalhes</a>`);
+          .bindPopup(`<b>Creche mais próxima:</b><br>${crecheMaisProxima.nome}<br><a href="detalhes.html?nome=${encodeURIComponent(crecheMaisProxima.nome)}">Ver detalhes</a>`);
 
 
       } catch (err) {

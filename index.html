@@ -114,23 +114,27 @@
   </style>
 </head>
 <body>
+  <!-- Botão Admin no topo -->
+  <div style="position: absolute; top: 20px; right: 20px;">
+    <a href="admin_login.html" class="btn" style="padding: 6px 12px; font-size: 14px;">Admin</a>
+  </div>
+
   <div class="container">
     <div class="form-box">
       <div class="left">
         <h2>Prefeitura de <br><strong>Santo André</strong></h2>
+        
         <form action="processa_login.php" method="POST" class="login-form">
-      
           <input type="email" name="email" id="email" placeholder="Digite seu email ou CPF" required>
-
           <input type="password" name="senha" id="senha" placeholder="Digite sua senha" required>
-
           <button type="submit" class="btn">Entrar</button>
         </form>
+
         <a href="recuperar_senha.php" class="link">Esqueci minha senha</a>
       </div>
 
-
       <div class="separator"></div>
+
       <div class="right">
         <h3>Cadastre seu filho na creche mais próxima a você</h3>
         <p>Para realizar o login, você pode usar seu email ou CPF.</p>
@@ -140,4 +144,5 @@
     </div>
   </div>
 </body>
+
 </html>

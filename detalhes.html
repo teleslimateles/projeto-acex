@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Creches em Santo André</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .creches-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .creche-card {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      width: 250px;
+      padding: 15px;
+      text-align: center;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.2s ease;
+    }
+
+    .creche-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .creche-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .creche-card h2 {
+      font-size: 18px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Creches em Santo André</h1>
+
+  <div class="creches-container">
+    <a href="creche_lara.html" class="creche-card">
+      <img src="lara.jpeg" alt="Creche Professora Lara Balieiro Lima">
+      <h2>Creche Professora Lara Balieiro Lima</h2>
+    </a>
+
+    <a href="creche_irmarosina.html" class="creche-card">
+      <img src="irmarosina.jpg" alt="Creche Irmã Rosina da Silva">
+      <h2>Creche Irmã Rosina da Silva</h2>
+    </a>
+
+    <a href="creche_esther.html" class="creche-card">
+      <img src="esthermoura.png" alt="Creche Professora Esther Moura Barreto">
+      <h2>Creche Professora Esther Moura Barreto</h2>
+    </a>
+
+    <a href="creche_bethlobo.html" class="creche-card">
+      <img src="beth_lobo.jpeg" alt="Creche Beth Lobo">
+      <h2>Creche Beth Lobo</h2>
+    </a>
+
+    <a href="creche_maria.html" class="creche-card">
+      <img src="maria.png" alt="Creche Municipal Delphina de Carvalho Neve">
+      <h2>Creche Municipal Delphina de Carvalho Neve</h2>
+    </a>
+  </div>
+</body>
+</html>

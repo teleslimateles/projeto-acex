@@ -92,9 +92,9 @@
         // Atualiza o mapa e marcador
         map.setView([coords.lat, coords.lon], 16);
         if (marker) map.removeLayer(marker);
-        marker = L.marker([coords.lat, coords.lon]).addTo(map)
-          .bindPopup(`CEP: ${cep}<br>${endereco}`)
-          .openPopup();
+       marker = L.marker([coords.lat, coords.lon]).addTo(map)
+          .bindPopup(`CEP: ${cep}<br>${endereco}<br><a href="detalhes.html?cep=${cep}" target="_blank">Mais detalhes</a>`)
+  .        openPopup();
       } catch (err) {
         alert(err.message);
       }
