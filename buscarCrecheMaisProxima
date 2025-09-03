@@ -20,9 +20,9 @@ const creches = [
     lon: -46.5392
   },
   {
-    nome: "Creche Municipal Maria Delphina de Carvalho Neve",
-    lat: -23.6639,
-    lon: -46.5383
+    nome: "Creche Angela Masieiro",
+    lat: -23.68872,
+    lon: -46.51058
   }
 ];
 function calcularDistancia(lat1, lon1, lat2, lon2) {
