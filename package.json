@@ -1,0 +1,20 @@
+{
+  "name": "projeto",
+  "version": "1.0.0",
+  "description": "📘 Sistema de Cadastro de Creches\r Este projeto é um sistema web simples com funcionalidades de cadastro de responsáveis, endereços, creches, login e recuperação de senha, com integração a banco de dados. O objetivo é facilitar o gerenciamento de cadastros relacionados a creches.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/teleslimateles/projeto-acex.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/teleslimateles/projeto-acex/issues"
+  },
+  "homepage": "https://github.com/teleslimateles/projeto-acex#readme"
+}
